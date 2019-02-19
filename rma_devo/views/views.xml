@@ -112,7 +112,7 @@
 </field>
 </record>
 
-<!--buttons de good condition-->
+<!--buttons -->
 
 <record id="inherit_bot_nu3" model="ir.ui.view">
   <field name="name">bot_.nu3</field>
