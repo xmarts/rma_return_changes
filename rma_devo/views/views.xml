@@ -73,45 +73,49 @@
   <!--buttons de validation-->
 
 
-<record id="inherit_bot_nu" model="ir.ui.view">
-    <field name="name">bot_.nu</field>
+<record id="inherit_bot_nu1" model="ir.ui.view">
+    <field name="name">bot_.nu1</field>
     <field name="model">crm.claim.ept</field>
     <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//header/button[@name='set_to_draft']" position="after"> 
+
+     <xpath expr="//header/button[@name='set_to_draft']" position="after"> 
  
        <button type="object" name="reviewpiezza" states="approve" string="review" class="oe_highlight"/>
 
       </xpath>
 
    </data>
-  </field>
-  </record> 
+  </field> 
+</record>
+
+
+
+
 
 <!--buttons de good condition-->
 
-<record id="inherit_bot_nu" model="ir.ui.view">
-    <field name="name">bot_.nu</field>
-    <field name="model">crm.claim.ept</field>
-    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
- 
-       <button type="object" name="statecondition" states="review" string="state" class="oe_highlight"/>
+<record id="inherit_bot_nu2" model="ir.ui.view">
+  <field name="name">bot_.nu2</field>
+  <field name="model">crm.claim.ept</field>
+  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+  <field name="arch" type="xml">
+    <data>
+      <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
 
-      </xpath>
+     <button type="object" name="statecondition" states="review" string="state" class="oe_highlight"/>
 
-   </data>
-  </field>
-  </record>
+    </xpath>
 
-  <!--buttons de good condition-->
+ </data>
+</field>
+</record>
 
+<!--buttons de good condition-->
 
-<record id="inherit_bot_nu" model="ir.ui.view">
-  <field name="name">bot_.nu</field>
+<record id="inherit_bot_nu3" model="ir.ui.view">
+  <field name="name">bot_.nu3</field>
   <field name="model">crm.claim.ept</field>
   <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
   <field name="arch" type="xml">
@@ -150,7 +154,6 @@
       </data>
   </field>
 </record>  
-
  
   </data>
 </odoo>
