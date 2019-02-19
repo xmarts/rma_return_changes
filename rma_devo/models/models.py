@@ -40,10 +40,17 @@ class ValidationR(models.Model):
 	def defaultmanu(self):
 		self.write({'state':'default'})
 
+	
 	@api.one
 	def processva(self):
-		self.write({'state':'process'})			
-	
+		self.write({'state':'process'})	
+
+
+	@api.one
+	def manufacturingproc(self):
+		self.write({'state':'process'})				
+		
+
 
 
 

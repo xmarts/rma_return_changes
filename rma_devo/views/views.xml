@@ -109,39 +109,48 @@
 
   <!--buttons de good condition-->
 
+
+<record id="inherit_bot_nu" model="ir.ui.view">
+  <field name="name">bot_.nu</field>
+  <field name="model">crm.claim.ept</field>
+  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+  <field name="arch" type="xml">
+
+
+      <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
+
+         <button type="object" name="defaultmanu" states="state" string="default" class="oe_highlight"/>
+      
+       </xpath>
+
+       <xpath expr="//header/button[@name='defaultmanu']" position="before"> 
+
+          <button type="object" name="processva" states="state" string="processing" class="oe_highlight"/>
+
+       </xpath>
+
+ </field>
+</record>  
+
+<!--Button para manufaturing y pasar a proceso-->
+
 <record id="inherit_bot_nu" model="ir.ui.view">
     <field name="name">bot_.nu</field>
     <field name="model">crm.claim.ept</field>
     <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
     <field name="arch" type="xml">
+
       <data>
-
-        <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
+  
+         <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
  
-           <button type="object" name="defaultmanu" states="state" string="default" class="oe_highlight"/>
-      </xpath>
-
-
-   </data>
+          <button type="object" name="manufacturingproc" states="default" string="processing" class="oe_highlight"/>
+        
+        </xpath>
+      </data>
   </field>
-  </record>  
+</record>  
 
-  <!--Button para pasar a proceso-->
-<!-- <record id="inherit_bot_nu" model="ir.ui.view">
-    <field name="name">bot_.nu</field>
-    <field name="model">crm.claim.ept</field>
-    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//header/button[@name='action_rma_send']" position="before"> 
- 
-       <button type="object" name="processva" states="state" string="proccess" class="oe_highlight"/>
-
-      </xpath>-->
-
-   </data>
-  </field>
-  </record> 
  
   </data>
 </odoo>
