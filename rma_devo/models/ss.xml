@@ -1,0 +1,14 @@
+  <!--  <record id="inherit_purchase_ord" model="ir.ui.view">
+    <field name="name">purchase.ord</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='sale_id']" position="after"> 
+
+        <field name="provedores"/>
+
+      </xpath>-->
+
+
+      #	provedores = fields.Many2one('purcharse.order',string="provedores")

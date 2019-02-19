@@ -1,0 +1,147 @@
+<odoo>
+  <data>
+
+
+    <record id="inherit_ValidationRma_n" model="ir.ui.view">
+    <field name="name">ValidationRma.n</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='picking_id']" position="replace"> 
+
+        <field name="picking_id"  attrs="{'readonly':[('state','!=','draft')]}"  options="{'no_quick_create':True,'no_create_edit':True,'no_quick_open': True}" required="1"/>
+
+      </xpath>
+      </data>
+     </field>
+  </record>
+
+
+
+    <record id="inherit_ValidationRma_nn" model="ir.ui.view">
+    <field name="name">ValidationRma.nn</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='sale_id']" position="replace"> 
+
+        <field name="sale_id"/>
+
+      </xpath>
+      </data>
+     </field>
+  </record>
+
+<!--agergar campo pursade id-->
+
+  <record id="inherit_purchase_ord" model="ir.ui.view">
+    <field name="name">purchase.ord</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='sale_id']" position="after"> 
+ 
+        <field name="purchase_id" />
+
+      </xpath>
+
+   </data>
+  </field>
+  </record>    
+
+  <!--statusbar state -->
+
+   <record id="inherit_view_states" model="ir.ui.view">
+    <field name="name">view.states</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+
+      <field name="state" position="replace">
+
+        <field name="state" widget="statusbar" statusbar_visible="draft,approve,review,state,default,process,close,reject"/>
+
+      </field>
+
+  </field>
+  </record>
+
+
+  <!--buttons de validation-->
+
+
+<record id="inherit_bot_nu" model="ir.ui.view">
+    <field name="name">bot_.nu</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//header/button[@name='set_to_draft']" position="after"> 
+ 
+       <button type="object" name="reviewpiezza" states="approve" string="review" class="oe_highlight"/>
+
+      </xpath>
+
+   </data>
+  </field>
+  </record> 
+
+<!--buttons de good condition-->
+
+<record id="inherit_bot_nu" model="ir.ui.view">
+    <field name="name">bot_.nu</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
+ 
+       <button type="object" name="statecondition" states="review" string="state" class="oe_highlight"/>
+
+      </xpath>
+
+   </data>
+  </field>
+  </record>
+
+  <!--buttons de good condition-->
+
+<record id="inherit_bot_nu" model="ir.ui.view">
+    <field name="name">bot_.nu</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+      <data>
+
+        <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
+ 
+           <button type="object" name="defaultmanu" states="state" string="default" class="oe_highlight"/>
+      </xpath>
+
+
+   </data>
+  </field>
+  </record>  
+
+  <!--Button para pasar a proceso-->
+<!-- <record id="inherit_bot_nu" model="ir.ui.view">
+    <field name="name">bot_.nu</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//header/button[@name='action_rma_send']" position="before"> 
+ 
+       <button type="object" name="processva" states="state" string="proccess" class="oe_highlight"/>
+
+      </xpath>-->
+
+   </data>
+  </field>
+  </record> 
+ 
+  </data>
+</odoo>
