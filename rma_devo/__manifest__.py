@@ -11,7 +11,7 @@
     """,
 
     'author': "xmarts",
-    'email' :"",
+    'email' :"desarrollo@xmarts.com",
     'contributors':"luis angel gonzalez cruz",
     'website': "http://www.yourcompany.com",
 
