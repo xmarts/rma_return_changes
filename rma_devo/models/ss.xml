@@ -1,14 +1,28 @@
-  <!--  <record id="inherit_purchase_ord" model="ir.ui.view">
-    <field name="name">purchase.ord</field>
-    <field name="model">crm.claim.ept</field>
-    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='sale_id']" position="after"> 
 
-        <field name="provedores"/>
+<!--
 
-      </xpath>-->
-
-
-      #	provedores = fields.Many2one('purcharse.order',string="provedores")
+  #@api.multi
+  #def approve_claim(self):
+  # processed_product_list=[]
+  # if len(self.claim_line_ids)<=0:
+  #   raise Warning(_("Please set return products."))
+  #   total_qty=0
+  #   for line in self.claim_line_ids:
+  #     moves=line.search([('move_id','=',line.move_id.id)])
+  #     for m in moves:
+  #       if m.claim_id.state in ['process','approve','close']:
+  #         total_qty+=m.quantity
+  #     if total_qty>=line.move_id.quantity_done:
+  #       processed_product_list.append(line.product_id.name)
+  #   if processed_product_list:
+  #     raise Warning(_('%s Product\'s delivered quantites were already processed for RMA'%(", ".join(processed_product_list))))
+  #   for line in self.claim_line_ids:
+  #     if line.quantity<=0 or not line.rma_reason_id:
+  #       raise Warning(_("Please set Return Quantity and Reason for all products."))
+  # if self.deadline >= self.date:
+  #   self.write({'state':'approve'})
+  # else:
+  #   self.write({'state':'reject'})
+  # self.create_return_picking()
+  # self.action_rma_send_email()
+  # return True

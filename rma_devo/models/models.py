@@ -19,14 +19,13 @@ class ValidationR(models.Model):
 
 	state = fields.Selection([('draft','Draft'),('approve','Approved'),('review','Review piece'),('state','good condition'),('default','manufacturing'),('process','Processing'),('close','Closed'),('reject','Rejected')])
 
-
+	name_canceled = fields.Many2one('res.users',string="name of who canceled", readonly=True)
 
 	@api.onchange('picking_id')
 	def onchange_picking_id_add(self):
 		if self.picking_id:
 			valor = self.picking_id.purchase_id.id
 			self.purchase_id = valor
-	
 
 	@api.one
 	def reviewpiezza(self):
@@ -40,7 +39,6 @@ class ValidationR(models.Model):
 	def defaultmanu(self):
 		self.write({'state':'default'})
 
-	
 	@api.one
 	def processva(self):
 		self.write({'state':'process'})	
@@ -49,7 +47,14 @@ class ValidationR(models.Model):
 	@api.one
 	def manufacturingproc(self):
 		self.write({'state':'process'})				
+	
+
+class date_limited(models.Model):
+
+	_inherit ="sale.order"
 		
+
+	deadline = fields.Date(string="Return date")
 
 
 

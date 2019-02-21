@@ -7,10 +7,12 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Long description of module's purpose
+        In this module returns are made for purchases and sales generating a series of states to approve the return of products.
     """,
 
-    'author': "My Company",
+    'author': "xmarts",
+    'email' :"",
+    'contributors':"luis angel gonzalez cruz",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
