@@ -27,7 +27,7 @@
     <data>
       <xpath expr="//field[@name='sale_id']" position="replace"> 
 
-      <field name="sale_id" string="llll"/>
+      <field name="sale_id" />
 
     </xpath>
     </data>
