@@ -214,10 +214,13 @@ class crm_Claim_ept(models.Model):
         for line in self.claim_line_ids:
             if line.quantity<=0 or not line.rma_reason_id:
                 raise Warning(_("Please set Return Quantity and Reason for all products."))
-        if self.picking_id.sale_id.deadline >  self.date:
-            self.write({'state':'approve'})
+        if self.picking_id.sale_id.deadline:
+            if self.picking_id.sale_id.deadline >  self.date:
+                self.write({'state':'approve'})
+            else:
+                self.write({'state':'reject'})
         else:
-            self.write({'state':'reject'})
+            self.write({'state':'approve'})
         self.create_return_picking()
         self.action_rma_send_email()
         return True
