@@ -22,7 +22,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale','delivery','crm', 'purchase','rma_original'],
+    'depends': ['base','sale','delivery','crm', 'purchase','rma_ept'],
 
     # always loaded
     'data': [
