@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 class ValidationRma_n(models.Model):
@@ -55,6 +56,14 @@ class date_limited(models.Model):
 		
 
 	deadline = fields.Date(string="Return date")
+
+class opciondevolucion(models.Model):
+
+	_inherit ='stock.picking.type'
+
+	client_devo = fields.Boolean(string="Return client")
+	provee_devo =fields.Boolean(string="supplier return")
+
 
 
 
