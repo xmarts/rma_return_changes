@@ -3,36 +3,32 @@
 
 
   <record id="inherit_ValidationRma_n" model="ir.ui.view">
-  <field name="name">ValidationRma.n</field>
-  <field name="model">crm.claim.ept</field>
-  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
-  <field name="arch" type="xml">
-    <data>
+    <field name="name">ValidationRma.n</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
+    <field name="arch" type="xml">
+      <data>
       <xpath expr="//field[@name='picking_id']" position="replace"> 
-
-      <field name="picking_id"  attrs="{'readonly':[('state','!=','draft')]}"  options="{'no_quick_create':True,'no_create_edit':True,'no_quick_open': True}" required="1"/>
-
-    </xpath>
-    </data>
-   </field>
-</record>
+         <field name="picking_id"  attrs="{'readonly':[('state','!=','draft')]}"  options="{'no_quick_create':True,'no_create_edit':True,'no_quick_open': True}" required="1"/>
+      </xpath>
+     </data>
+    </field>
+  </record>
 
 
 
   <record id="inherit_ValidationRma_nn" model="ir.ui.view">
-  <field name="name">ValidationRma.nn</field>
-  <field name="model">crm.claim.ept</field>
-  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
-  <field name="arch" type="xml">
-    <data>
-      <xpath expr="//field[@name='sale_id']" position="replace"> 
-
-      <field name="sale_id" />
-
-    </xpath>
-    </data>
+   <field name="name">ValidationRma.nn</field>
+   <field name="model">crm.claim.ept</field>
+   <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" ></field>
+   <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='sale_id']" position="replace"> 
+          <field name="sale_id"/>
+      </xpath>
+      </data>
    </field>
-</record>
+  </record>
 
 <!--agergar campo pursade id-->
 
@@ -43,50 +39,39 @@
   <field name="arch" type="xml">
     <data>
       <xpath expr="//field[@name='sale_id']" position="after"> 
-
-      <field name="purchase_id" />
-
-    </xpath>
-
- </data>
-</field>
+        <field name="purchase_id" />
+      </xpath>
+     </data>
+   </field>
 </record>    
 
 <!--statusbar state -->
 
  <record id="inherit_view_states" model="ir.ui.view">
-  <field name="name">view.states</field>
-  <field name="model">crm.claim.ept</field>
-  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
-  <field name="arch" type="xml">
-
-    <field name="state" position="replace">
-
+   <field name="name">view.states</field>
+   <field name="model">crm.claim.ept</field>
+   <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+   <field name="arch" type="xml">
+     <field name="state" position="replace">
       <field name="state" widget="statusbar" statusbar_visible="draft,approve,review,state,default,process,close,reject"/>
-
-    </field>
-
-</field>
-</record>
+     </field>
+  </field>
+ </record>
 
 
 <!--buttons de validation-->
 
 <record id="inherit_bot_nu1" model="ir.ui.view">
-    <field name="name">bot_.nu1</field>
-    <field name="model">crm.claim.ept</field>
-    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
-    <field name="arch" type="xml">
-      <data>
-
+  <field name="name">bot_.nu1</field>
+  <field name="model">crm.claim.ept</field>
+  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+  <field name="arch" type="xml">
+    <data>
      <xpath expr="//header/button[@name='set_to_draft']" position="after"> 
- 
-       <button type="object" name="reviewpiezza" states="approve" string="review" class="oe_highlight"/>
-
-      </xpath>
-
-   </data>
-  </field> 
+        <button type="object" name="reviewpiezza" states="approve" string="review" class="oe_highlight"/>
+     </xpath>
+    </data>
+   </field> 
 </record>
 
 
@@ -102,38 +87,27 @@
   <field name="arch" type="xml">
     <data>
       <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
-
-     <button type="object" name="statecondition" states="review" string="state" class="oe_highlight"/>
-
-    </xpath>
-
- </data>
-</field>
+         <button type="object" name="statecondition" states="review" string="state" class="oe_highlight"/>
+      </xpath>
+    </data>
+  </field>
 </record>
 
 <!--buttons de good condition-->
 
-<record id="inherit_bot_nu3" model="ir.ui.view">
-  <field name="name">bot_.nu3</field>
-  <field name="model">crm.claim.ept</field>
-  <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
-  <field name="arch" type="xml">
-
-
+  <record id="inherit_bot_nu3" model="ir.ui.view">
+    <field name="name">bot_.nu3</field>
+    <field name="model">crm.claim.ept</field>
+    <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+    <field name="arch" type="xml">
       <xpath expr="//header/button[@name='action_rma_send']" position="after"> 
-
-         <button type="object" name="defaultmanu" states="state" string="default" class="oe_highlight"/>
-      
+           <button type="object" name="defaultmanu" states="state" string="default" class="oe_highlight"/>
        </xpath>
-
-       <xpath expr="//header/button[@name='defaultmanu']" position="before"> 
-
-          <button type="object" name="processva" states="state" string="processing" class="oe_highlight"/>
-
-       </xpath>
-
- </field>
-</record>  
+      <xpath expr="//header/button[@name='defaultmanu']" position="before"> 
+        <button type="object" name="processva" states="state" string="processing" class="oe_highlight"/>
+      </xpath>
+     </field>
+  </record>  
 
 <!--Button para manufaturing y pasar a proceso-->
 
@@ -164,13 +138,10 @@
   <field name="arch" type="xml">
     <data>
       <xpath expr="//field[@name='validity_date']" position="after"> 
-
-      <field name="deadline"/>
-
-    </xpath>
-
- </data>
-</field>
+        <field name="deadline"/>
+      </xpath>
+     </data>
+   </field>
 </record> 
 
 
@@ -183,16 +154,29 @@
   <field name="arch" type="xml">
     <data>
       <xpath expr="//field[@name='user_id']" position="after"> 
+         <field name="name_canceled" />
+      </xpath>
+     </data>
+  </field>
+</record>   
 
-      <field name="name_canceled" />
-
-    </xpath>
-
- </data>
-</field>
-</record>    
+<!--casilla para ver si es devolucion al cliente-->
 
 
+ 
+-<record id="inherit_return_cliente" model="ir.ui.view">
+  <field name="name">return.cliente</field>
+  <field name="model">stock.picking.type</field>
+  <field name="inherit_id" ref="stock.view_picking_type_form"/>
+  <field name="arch" type="xml">
+    <data>
+      <xpath expr="//field[@name='show_reserved']" position="after">
+        <field name="client_devo"/>
+        <field name="provee_devo"/>
+      </xpath>
+    </data>  
+  </field> 
+</record>
 
 
  </data>
