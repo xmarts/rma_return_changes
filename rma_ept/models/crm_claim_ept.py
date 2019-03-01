@@ -45,8 +45,8 @@ class crm_Claim_ept(models.Model):
         picking=self.env['stock.picking'].search([('id','=',self._context.get('active_id'))])
         if picking:
             res['picking_id']=picking.id
-        return res
-    
+        return res    
+        
     @api.multi
     def _get_default_section_id(self):
         return self.env['crm.lead']._resolve_section_id_from_context() or False  
@@ -197,6 +197,7 @@ class crm_Claim_ept(models.Model):
 
     @api.depends('deadline')
     @api.multi
+    @api.model
     def approve_claim(self):
         processed_product_list=[]
         if len(self.claim_line_ids)<=0:
@@ -214,15 +215,24 @@ class crm_Claim_ept(models.Model):
         for line in self.claim_line_ids:
             if line.quantity<=0 or not line.rma_reason_id:
                 raise Warning(_("Please set Return Quantity and Reason for all products."))
+
         if self.picking_id.sale_id.deadline:
-            if self.picking_id.sale_id.deadline >  self.date:
+            if self.picking_id.sale_id.deadline > self.date:
                 self.write({'state':'approve'})
             else:
                 self.write({'state':'reject'})
         else:
             self.write({'state':'approve'})
+
         self.create_return_picking()
         self.action_rma_send_email()
+
+        if self.sale_id:
+            pick_t_id = self.env['stock.picking.type'].search([('provee_devo','=',True)], limit=1)
+            self.return_picking_id.write({'picking_type_id':pick_t_id.id})
+        elif self.purcharse_id:
+            pick_t_id = self.env['stock.picking.type'].search([('client_devo','=',True)], limit=1)
+            self.return_picking_id.write({'picking_type_id':pick_t_id.id})
         return True
     
     def action_rma_send_email(self):

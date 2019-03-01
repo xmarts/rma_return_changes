@@ -31,6 +31,10 @@
 						<strong>Order Reference:</strong>
 						<p t-field="doc.sale_id" />
 					</div>
+					<div t-if="doc.purchase_id.name" class="col-xs-3" style="bottom:10px">
+						<strong>Order Reference:</strong>
+						<p t-field="doc.purchase_id" />
+					</div>
 					<div t-if="doc.picking_id.name" class="col-xs-3" style="bottom:10px">
 						<strong>Shipping Reference:</strong>
 						<p t-field="doc.picking_id" />
